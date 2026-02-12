@@ -7,6 +7,7 @@ import { useInvoiceStore } from '@/stores/invoice-store'
 import { useProjectStore } from '@/stores/project-store'
 import { PortalAccessSection } from './portal-access-section'
 import { ActivityTimeline } from './activity-timeline'
+import { ConsentManagement } from './consent-management'
 import { Mail, Phone, Building2, Plus, FileText, FolderKanban, CheckSquare } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useMemo } from 'react'
@@ -111,6 +112,17 @@ export function ContactOverviewTab({ contact }: ContactOverviewTabProps) {
 
             {/* Client Portal Access */}
             <PortalAccessSection contact={contact} />
+
+            {/* Privacy & Consent */}
+            <ConsentManagement
+                contactId={contact.id}
+                currentConsent={{
+                    marketing_consent: (contact as any).marketing_consent,
+                    data_processing_consent: (contact as any).data_processing_consent,
+                    consent_date: (contact as any).consent_date,
+                    privacy_policy_version: (contact as any).privacy_policy_version,
+                }}
+            />
 
             {/* Quick Actions */}
             <Card className="border-slate-200 bg-white">
