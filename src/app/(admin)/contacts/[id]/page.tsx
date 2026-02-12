@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ArrowLeft, Edit, Trash2, Loader2 } from 'lucide-react'
+import { ArrowLeft, Edit, Trash2, Loader2, Download } from 'lucide-react'
 import Link from 'next/link'
 import { STATUS_LABELS, STATUS_COLORS, ContactStatus } from '@/types/contact'
 import { TagsInput } from '@/components/contacts/tags-input'
@@ -43,6 +43,7 @@ export default function ContactDetailPage() {
 
     const [showEditDialog, setShowEditDialog] = useState(false)
     const [showDeleteDialog, setShowDeleteDialog] = useState(false)
+    const [showExportMenu, setShowExportMenu] = useState(false)
 
     // Fetch contacts on mount if needed
     useEffect(() => {
@@ -57,6 +58,12 @@ export default function ContactDetailPage() {
     const handleDelete = async () => {
         await deleteContact(contactId)
         router.push('/contacts')
+    }
+
+    const handleExport = (format: 'json' | 'csv') => {
+        const url = `/api/contacts/${contactId}/export?format=${format}`
+        window.open(url, '_blank')
+        setShowExportMenu(false)
     }
 
     if (isLoading || !contact) {
@@ -139,6 +146,32 @@ export default function ContactDetailPage() {
 
                         {/* Action Buttons */}
                         <div className="flex gap-2">
+                            <div className="relative">
+                                <Button
+                                    variant="outline"
+                                    onClick={() => setShowExportMenu(!showExportMenu)}
+                                    className="border-slate-300"
+                                >
+                                    <Download className="h-4 w-4 mr-2" />
+                                    Export Data
+                                </Button>
+                                {showExportMenu && (
+                                    <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-slate-200 z-10">
+                                        <button
+                                            onClick={() => handleExport('json')}
+                                            className="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-t-lg"
+                                        >
+                                            Export as JSON
+                                        </button>
+                                        <button
+                                            onClick={() => handleExport('csv')}
+                                            className="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 rounded-b-lg"
+                                        >
+                                            Export as CSV
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                             <Button
                                 variant="outline"
                                 onClick={() => setShowEditDialog(true)}
