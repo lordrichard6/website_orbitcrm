@@ -24,7 +24,7 @@ export function SeedDataButton() {
 
     const hasData = contacts.length > 0 || projects.length > 0 || tasks.length > 0 || conversations.length > 0
 
-    const handleSeed = () => {
+    const handleSeed = async () => {
         // Add contacts
         mockContacts.forEach((contact) => {
             addContact({
@@ -57,12 +57,14 @@ export function SeedDataButton() {
         })
 
         // Add conversations with messages
-        mockConversations.forEach((conv) => {
-            const newConv = createConversation({ title: conv.title })
-            conv.messages.forEach((msg) => {
-                addMessage(newConv.id, { role: msg.role, content: msg.content })
-            })
-        })
+        for (const conv of mockConversations) {
+            const newConv = await createConversation({ title: conv.title })
+            if (newConv) {
+                conv.messages.forEach((msg) => {
+                    addMessage(newConv.id, { role: msg.role, content: msg.content })
+                })
+            }
+        }
 
         setSeeded(true)
     }

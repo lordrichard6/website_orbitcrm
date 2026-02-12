@@ -5,95 +5,141 @@ inputDocuments:
   - "architecture.md"
 ---
 
-# OrbitCRM - Epic Breakdown
+# OrbitCRM - Epic Breakdown (Revised MVP)
 
 ## Overview
 
-This document provides the complete epic and story breakdown for OrbitCRM, decomposing the requirements from the PRD and Architecture into implementable stories.
+This document provides the epic and story breakdown for OrbitCRM with **simplified MVP scope**. Stories are now categorized into three phases:
 
-## Requirements Inventory
+- **Phase 1 (MVP):** Core AI CRM - Weeks 1-6
+- **Phase 2:** Knowledge + Tasks - Weeks 7-10
+- **Phase 3:** Growth Features - Weeks 11-16
+- **DEFERRED:** Post-launch features
 
-### Functional Requirements
+**Key Changes from Original:**
+- Client Portal DEFERRED to Phase 3+
+- Team invitations DEFERRED to Phase 3
+- Advanced RBAC (Admin/Viewer roles) DEFERRED
+- CSV import/export DEFERRED
+- Activity timeline DEFERRED
+- Subtasks and checklists DEFERRED
+- Multiple parallel chats DEFERRED
+- Directive learning system DEFERRED
 
-**Authentication & User Management (7 FRs)**
-- FR1: Users can sign up with email and password
-- FR2: Users can sign in with Google OAuth
-- FR3: Users can enable two-factor authentication (TOTP)
-- FR4: Owners can invite team members via email
-- FR5: Owners can assign roles (Admin, Member, Viewer) to team members
-- FR6: Users can view and update their profile
-- FR7: Users can reset their password via email
+## Requirements Inventory (Phased)
 
-**Organization & Multi-Tenancy (4 FRs)**
-- FR8: Owners can create and name their organization
-- FR9: Users can only access data within their organization
-- FR10: Admins can manage organization settings
-- FR11: Owners can view and manage billing information
+### Phase 1: Core AI CRM (MVP - Weeks 1-6)
 
-**Contact Management (7 FRs)**
-- FR12: Users can create, view, edit, and delete contacts
-- FR13: Users can classify contacts (Lead → Opportunity → Client → Churned)
-- FR14: Users can add tags and notes to contacts
-- FR15: Users can import contacts from CSV
-- FR16: Users can export contacts to CSV
-- FR17: Users can search and filter contacts
-- FR18: Users can view contact activity timeline
+**Authentication (Simplified)**
+- FR1: Users can sign up with email and password ✅ MVP
+- FR2: Users can sign in with Google OAuth ✅ MVP
+- FR6: Users can view and update their profile ✅ MVP
+- FR7: Users can reset their password via email ✅ MVP
 
-**Project Management (6 FRs)**
-- FR19: Users can create, view, edit, and delete projects
-- FR20: Users can link projects to clients
-- FR21: Users can set project status and milestones
-- FR22: Users can assign team members to projects
-- FR23: Users can attach files to projects
-- FR24: Users can view project deadlines
+**Organization (Simplified)**
+- FR8: Owners can create and name their organization ✅ MVP
+- FR9: Users can only access data within their organization ✅ MVP
 
-**Task Management (6 FRs)**
-- FR25: Users can create, view, edit, and delete tasks
-- FR26: Users can link tasks to contacts, projects, or standalone
-- FR27: Users can set task priority (Low, Medium, High, Urgent)
-- FR28: Users can set due dates on tasks
-- FR29: Users can view tasks in Kanban or List view
-- FR30: Users can create subtasks and checklists
+**Contact Management (Essential)**
+- FR12: Users can create, view, edit, and delete contacts ✅ MVP
+- FR13: Users can classify contacts (Lead → Opportunity → Client → Churned) ✅ MVP
+- FR14: Users can add tags and notes to contacts ✅ MVP
+- FR17: Users can search and filter contacts ✅ MVP
 
-**AI Chat & Conversation (9 FRs)**
-- FR31: Users can open AI chat conversations
-- FR32: Users can select AI model per conversation
-- FR33: Users can attach context to conversations (contacts, projects, files, directives)
-- FR34: Users can view streaming AI responses in real-time
-- FR35: Users can view conversation history
-- FR36: Users can open multiple parallel chat conversations
-- FR37: AI can draft emails based on context
-- FR38: AI can generate task suggestions from conversation
-- FR39: AI can update CRM fields based on user confirmation
+**AI Chat (Core Differentiator)**
+- FR31: Users can open AI chat conversations ✅ MVP
+- FR32: Users can select AI model per conversation ✅ MVP
+- FR34: Users can view streaming AI responses in real-time ✅ MVP
+- FR35: Users can view conversation history ✅ MVP
+- FR54: System can track token usage per user and model ✅ MVP
 
-**RAG & Knowledge Base (5 FRs)**
-- FR40: Users can upload documents (PDF, TXT, MD)
-- FR41: System can chunk and embed documents automatically
-- FR42: Users can query knowledge base through AI chat
-- FR43: AI responses include source citations when using RAG
-- FR44: Users can manage uploaded documents
+**Invoicing (Core)**
+- NEW: Users can generate Swiss QR-Bill invoices ✅ MVP
+- NEW: Users can generate EU IBAN invoices ✅ MVP
+- NEW: Users can link invoices to contacts ✅ MVP
 
-**Directives & AI Behavior (4 FRs)**
-- FR45: Admins can create organizational directives (SOPs)
-- FR46: Users can attach directives to AI conversations
-- FR47: AI follows attached directives when responding
-- FR48: Admins can edit and delete directives
+### Phase 2: Knowledge + Tasks (Weeks 7-10)
 
-**Document Generation (3 FRs)**
-- FR49: Users can generate PDF proposals from templates
-- FR50: Users can preview generated documents
-- FR51: Users can download generated documents
+**RAG & Knowledge Base**
+- FR40: Users can upload documents (PDF, TXT, MD) ✅ Phase 2
+- FR41: System can chunk and embed documents automatically ✅ Phase 2
+- FR42: Users can query knowledge base through AI chat ✅ Phase 2
+- FR43: AI responses include source citations when using RAG ✅ Phase 2
+- FR44: Users can manage uploaded documents ✅ Phase 2
 
-**Integrations & Actions (3 FRs)**
-- FR52: AI can send emails with user confirmation
-- FR53: AI can trigger webhook actions
-- FR54: System can track token usage per user and model
+**Task Management (Simplified)**
+- FR25: Users can create, view, edit, and delete tasks ✅ Phase 2
+- FR26: Users can link tasks to contacts, projects, or standalone ✅ Phase 2
+- FR27: Users can set task priority (Low, Medium, High, Urgent) ✅ Phase 2
+- FR28: Users can set due dates on tasks ✅ Phase 2
 
-**Billing & Subscriptions (4 FRs)**
-- FR55: Users can view their current plan and usage
-- FR56: Users can upgrade or downgrade their plan
-- FR57: Users can purchase token packs
-- FR58: System enforces token limits per plan
+**AI Actions**
+- FR33: Users can attach context to conversations ✅ Phase 2
+- FR37: AI can draft emails based on context ✅ Phase 2
+- FR38: AI can generate task suggestions from conversation ✅ Phase 2
+- FR52: AI can send emails with user confirmation ✅ Phase 2
+
+**Billing Integration**
+- FR55: Users can view their current plan and usage ✅ Phase 2
+- FR56: Users can upgrade or downgrade their plan ✅ Phase 2
+- FR58: System enforces token limits per plan ✅ Phase 2
+
+### Phase 3: Growth Features (Weeks 11-16)
+
+**Projects (Basic)**
+- FR19: Users can create, view, edit, and delete projects ✅ Phase 3
+- FR20: Users can link projects to clients ✅ Phase 3
+- FR24: Users can view project deadlines ✅ Phase 3
+
+**Team Features**
+- FR4: Owners can invite team members via email ✅ Phase 3
+- FR5: Owners can assign roles (Owner, Member) to team members ✅ Phase 3
+
+**Vertical Packs**
+- NEW: Consultant Pack (SOW templates, hourly tracking) ✅ Phase 3
+
+### DEFERRED (Post-Launch)
+
+**Authentication (Advanced)**
+- FR3: Users can enable two-factor authentication (TOTP) ⏳ DEFERRED
+
+**Organization (Advanced)**
+- FR10: Admins can manage organization settings ⏳ DEFERRED
+- FR11: Owners can view and manage billing information ⏳ DEFERRED (basic only)
+- Advanced RBAC (Admin, Viewer roles) ⏳ DEFERRED
+
+**Contact Management (Advanced)**
+- FR15: Users can import contacts from CSV ⏳ DEFERRED
+- FR16: Users can export contacts to CSV ⏳ DEFERRED
+- FR18: Users can view contact activity timeline ⏳ DEFERRED
+
+**Project Management (Advanced)**
+- FR21: Users can set project status and milestones ⏳ DEFERRED
+- FR22: Users can assign team members to projects ⏳ DEFERRED
+- FR23: Users can attach files to projects ⏳ DEFERRED
+
+**Task Management (Advanced)**
+- FR29: Users can view tasks in Kanban or List view ⏳ DEFERRED (list only for MVP)
+- FR30: Users can create subtasks and checklists ⏳ DEFERRED
+
+**AI Chat (Advanced)**
+- FR36: Users can open multiple parallel chat conversations ⏳ DEFERRED
+- FR39: AI can update CRM fields based on user confirmation ⏳ DEFERRED
+
+**Directives (Full System)**
+- FR45: Admins can create organizational directives (SOPs) ⏳ DEFERRED
+- FR46: Users can attach directives to AI conversations ⏳ DEFERRED
+- FR47: AI follows attached directives when responding ⏳ DEFERRED
+- FR48: Admins can edit and delete directives ⏳ DEFERRED
+
+**Document Generation**
+- FR49: Users can generate PDF proposals from templates ⏳ DEFERRED (Phase 3)
+- FR50: Users can preview generated documents ⏳ DEFERRED
+- FR51: Users can download generated documents ⏳ DEFERRED
+
+**Integrations (Advanced)**
+- FR53: AI can trigger webhook actions ⏳ DEFERRED
+- FR57: Users can purchase token packs ⏳ DEFERRED
 
 ### Non-Functional Requirements
 
@@ -169,47 +215,78 @@ This document provides the complete epic and story breakdown for OrbitCRM, decom
 
 ---
 
-## Epic List
+## Epic List (Phased)
 
-### Epic 1: Project Foundation
+### Phase 1: Core AI CRM (MVP - Weeks 1-6)
+
+#### Epic 1: Project Foundation ✅ MVP
 Initialize core application infrastructure with Next.js, Supabase, and essential tooling.
-**FRs covered:** Architecture setup (no FRs, enables all others)
+**Scope:** Full epic in MVP
 
-### Epic 2: Authentication & Organization
-Users can sign up, login, manage profiles, create organizations, and invite team members with roles.
-**FRs covered:** FR1-FR11 (11 FRs)
+#### Epic 2: Authentication & Organization (Simplified) ✅ MVP
+Users can sign up, login, manage profiles, and create organizations.
+**MVP Scope:** Email + Google OAuth, password reset, org creation
+**DEFERRED:** Team invitations, advanced RBAC, MFA
 
-### Epic 3: Contact Management
-Users can manage contacts, classify them through the sales pipeline, tag, search, and track activity.
-**FRs covered:** FR12-FR18 (7 FRs)
+#### Epic 3: Contact Management (Essential) ✅ MVP
+Users can manage contacts, classify them through the sales pipeline, tag, and search.
+**MVP Scope:** CRUD, pipeline, tags, notes, search
+**DEFERRED:** CSV import/export, activity timeline
 
-### Epic 4: Project & Task Management
-Users can manage projects linked to clients, create tasks with priorities and deadlines, and view in Kanban.
-**FRs covered:** FR19-FR30 (12 FRs)
+#### Epic 5: AI Chat Core ✅ MVP
+Users can have AI conversations with model selection and streaming responses.
+**MVP Scope:** Single chat, model selection, streaming, history
+**DEFERRED:** Multiple parallel chats
 
-### Epic 5: AI Chat Core
-Users can have AI conversations with model selection, streaming responses, and conversation history.
-**FRs covered:** FR31-FR36 (6 FRs)
+#### Epic 11: Invoicing (NEW) ✅ MVP
+Users can generate and manage invoices with Swiss QR-Bill and EU IBAN support.
+**MVP Scope:** Invoice CRUD, QR-Bill generation, PDF export, Stripe tracking
 
-### Epic 6: RAG & Knowledge Base
-Users can upload documents, which are automatically chunked and embedded for AI-powered queries.
-**FRs covered:** FR40-FR44 (5 FRs)
+### Phase 2: Knowledge + Tasks (Weeks 7-10)
 
-### Epic 7: Directives & Context
-Users can create directives to guide AI behavior and attach context to conversations.
-**FRs covered:** FR33, FR45-FR48 (5 FRs)
+#### Epic 6: RAG & Knowledge Base ✅ Phase 2
+Users can upload documents for AI-powered queries.
+**Full scope in Phase 2**
 
-### Epic 8: AI Actions & Execution
-AI can draft emails, suggest tasks, update CRM fields, and trigger webhooks with user confirmation.
-**FRs covered:** FR37-FR39, FR52-FR53 (5 FRs)
+#### Epic 4: Task Management (Simplified) ✅ Phase 2
+Users can manage tasks with priorities and due dates.
+**Phase 2 Scope:** CRUD, linking, priorities, due dates, list view
+**DEFERRED:** Kanban view, subtasks, checklists
 
-### Epic 9: Document Generation
-Users can generate PDF proposals from templates, preview, and download.
-**FRs covered:** FR49-FR51 (3 FRs)
+#### Epic 8: AI Actions (Essential) ✅ Phase 2
+AI can draft emails and suggest tasks.
+**Phase 2 Scope:** Email drafting, task suggestions, email sending
+**DEFERRED:** CRM field updates, webhooks
 
-### Epic 10: Billing & Subscriptions
-Users can manage subscription plans, track token usage, and purchase additional tokens.
-**FRs covered:** FR54-FR58 (5 FRs)
+#### Epic 10: Billing & Subscriptions (Essential) ✅ Phase 2
+Users can view usage and manage subscription plans.
+**Phase 2 Scope:** Token tracking, plan display, Stripe webhooks
+**DEFERRED:** Token pack purchases
+
+### Phase 3: Growth Features (Weeks 11-16)
+
+#### Epic 4b: Project Management (Basic) ✅ Phase 3
+Users can manage projects linked to clients.
+**Phase 3 Scope:** CRUD, client linking, deadlines
+**DEFERRED:** Milestones, team assignments, file attachments
+
+#### Epic 2b: Team Features ✅ Phase 3
+Owners can invite team members.
+**Phase 3 Scope:** Invitations, Owner/Member roles
+
+#### Epic 12: Vertical Packs (NEW) ✅ Phase 3
+Industry-specific feature modules.
+**Phase 3 Scope:** Consultant Pack (SOW templates, hourly tracking)
+
+### DEFERRED (Post-Launch)
+
+#### Epic 7: Directives & Context ⏳ DEFERRED
+Users can create directives to guide AI behavior.
+**Full epic deferred**
+
+#### Epic 9: Document Generation ⏳ DEFERRED
+Users can generate PDF proposals from templates.
+**Full epic deferred (consider for Phase 3)**
 
 ---
 
@@ -298,11 +375,14 @@ So that the foundation tables exist for subsequent features.
 
 ---
 
-## Epic 2: Authentication & Organization
+## Epic 2: Authentication & Organization (MVP - Simplified)
 
-Users can sign up, login, manage profiles, create organizations, and invite team members.
+Users can sign up, login, manage profiles, and create organizations.
 
-### Story 2.1: Email/Password Registration
+**Phase:** MVP (Weeks 1-6)
+**Deferred Stories:** 2.7 (Team Invitations), 2.8 (Advanced RBAC)
+
+### Story 2.1: Email/Password Registration ✅ MVP
 
 As a new user,
 I want to sign up with my email and password,
@@ -318,7 +398,7 @@ So that I can create an account and access the application.
 
 ---
 
-### Story 2.2: Email/Password Login
+### Story 2.2: Email/Password Login ✅ MVP
 
 As a registered user,
 I want to log in with my email and password,
@@ -334,7 +414,7 @@ So that I can access my account.
 
 ---
 
-### Story 2.3: Google OAuth Login
+### Story 2.3: Google OAuth Login ✅ MVP
 
 As a user,
 I want to sign in with my Google account,
@@ -350,7 +430,7 @@ So that I can access the application without creating a new password.
 
 ---
 
-### Story 2.4: Password Reset Flow
+### Story 2.4: Password Reset Flow ✅ MVP
 
 As a user who forgot their password,
 I want to reset my password via email,
@@ -366,7 +446,7 @@ So that I can regain access to my account.
 
 ---
 
-### Story 2.5: Organization Creation
+### Story 2.5: Organization Creation ✅ MVP
 
 As a new user,
 I want to create my organization during onboarding,
@@ -382,7 +462,7 @@ So that I have a workspace for my team.
 
 ---
 
-### Story 2.6: User Profile Management
+### Story 2.6: User Profile Management ✅ MVP
 
 As a user,
 I want to view and update my profile,
@@ -398,7 +478,7 @@ So that my information is current.
 
 ---
 
-### Story 2.7: Team Member Invitation
+### Story 2.7: Team Member Invitation ⏳ DEFERRED (Phase 3)
 
 As an organization owner,
 I want to invite team members via email,
@@ -414,7 +494,9 @@ So that they can join my organization.
 
 ---
 
-### Story 2.8: Role-Based Access Control
+### Story 2.8: Role-Based Access Control ⏳ DEFERRED (Phase 3 - Simplified)
+
+**Note:** MVP uses simple Owner/Member roles only. Admin/Viewer deferred.
 
 As an organization owner,
 I want to assign and manage roles for team members,
@@ -430,11 +512,14 @@ So that I can control access levels.
 
 ---
 
-## Epic 3: Contact Management
+## Epic 3: Contact Management (MVP - Essential)
 
-Users can manage contacts, classify them through the sales pipeline, and track activity.
+Users can manage contacts, classify them through the sales pipeline, and organize with tags.
 
-### Story 3.1: Contact CRUD Operations
+**Phase:** MVP (Weeks 1-6)
+**Deferred Stories:** 3.4 (CSV Import), 3.5 (CSV Export), 3.7 (Activity Timeline)
+
+### Story 3.1: Contact CRUD Operations ✅ MVP
 
 As a CRM user,
 I want to create, view, edit, and delete contacts,
@@ -450,7 +535,7 @@ So that I can manage my customer relationships.
 
 ---
 
-### Story 3.2: Contact Pipeline Classification
+### Story 3.2: Contact Pipeline Classification ✅ MVP
 
 As a sales user,
 I want to classify contacts through pipeline stages,
@@ -466,7 +551,7 @@ So that I can track their journey.
 
 ---
 
-### Story 3.3: Contact Tags and Notes
+### Story 3.3: Contact Tags and Notes ✅ MVP
 
 As a CRM user,
 I want to add tags and notes to contacts,
@@ -482,7 +567,7 @@ So that I can organize and document interactions.
 
 ---
 
-### Story 3.4: Contact CSV Import
+### Story 3.4: Contact CSV Import ⏳ DEFERRED
 
 As a CRM user,
 I want to import contacts from a CSV file,
@@ -498,7 +583,7 @@ So that I can migrate existing data.
 
 ---
 
-### Story 3.5: Contact CSV Export
+### Story 3.5: Contact CSV Export ⏳ DEFERRED
 
 As a CRM user,
 I want to export contacts to CSV,
@@ -514,7 +599,7 @@ So that I can use data in other tools.
 
 ---
 
-### Story 3.6: Contact Search and Filter
+### Story 3.6: Contact Search and Filter ✅ MVP
 
 As a CRM user,
 I want to search and filter contacts,
@@ -530,7 +615,7 @@ So that I can quickly find who I need.
 
 ---
 
-### Story 3.7: Contact Activity Timeline
+### Story 3.7: Contact Activity Timeline ⏳ DEFERRED
 
 As a CRM user,
 I want to view a contact's activity timeline,
@@ -546,11 +631,15 @@ So that I can see the history of interactions.
 
 ---
 
-## Epic 4: Project & Task Management
+## Epic 4: Project & Task Management (Phase 2/3 - Simplified)
 
-Users can manage projects linked to clients and tasks with priorities.
+Users can manage tasks (Phase 2) and projects (Phase 3).
 
-### Story 4.1: Project CRUD Operations
+**Tasks Phase:** Phase 2 (Weeks 7-10)
+**Projects Phase:** Phase 3 (Weeks 11-16)
+**Deferred:** Milestones, team assignments, Kanban view, subtasks
+
+### Story 4.1: Project CRUD Operations ⏳ Phase 3
 
 As a user,
 I want to create, view, edit, and delete projects,
@@ -565,7 +654,7 @@ So that I can organize my work.
 
 ---
 
-### Story 4.2: Link Projects to Clients
+### Story 4.2: Link Projects to Clients ⏳ Phase 3
 
 As a user,
 I want to link projects to client contacts,
@@ -581,7 +670,7 @@ So that I can track project-client relationships.
 
 ---
 
-### Story 4.3: Project Status and Milestones
+### Story 4.3: Project Status and Milestones ⏳ DEFERRED
 
 As a project manager,
 I want to set project status and milestones,
@@ -597,7 +686,7 @@ So that I can track progress.
 
 ---
 
-### Story 4.4: Task CRUD Operations
+### Story 4.4: Task CRUD Operations ✅ Phase 2
 
 As a user,
 I want to create, view, edit, and delete tasks,
@@ -613,7 +702,7 @@ So that I can manage my to-dos.
 
 ---
 
-### Story 4.5: Task Linking
+### Story 4.5: Task Linking ✅ Phase 2
 
 As a user,
 I want to link tasks to contacts or projects,
@@ -629,7 +718,7 @@ So that I can organize work by context.
 
 ---
 
-### Story 4.6: Task Kanban View
+### Story 4.6: Task Kanban View ⏳ DEFERRED (List view only for MVP)
 
 As a user,
 I want to view tasks in Kanban board,
@@ -645,7 +734,7 @@ So that I can visualize my workflow.
 
 ---
 
-### Story 4.7: Subtasks and Checklists
+### Story 4.7: Subtasks and Checklists ⏳ DEFERRED
 
 As a user,
 I want to create subtasks within a task,
@@ -661,11 +750,14 @@ So that I can break down complex work.
 
 ---
 
-## Epic 5: AI Chat Core
+## Epic 5: AI Chat Core (MVP - Core Differentiator)
 
 Users can have AI conversations with model selection and streaming.
 
-### Story 5.1: AI Chat Interface
+**Phase:** MVP (Weeks 1-6)
+**Deferred:** Multiple parallel chats (Story 5.5)
+
+### Story 5.1: AI Chat Interface ✅ MVP
 
 As a user,
 I want to open an AI chat conversation,
@@ -681,7 +773,7 @@ So that I can interact with the AI assistant.
 
 ---
 
-### Story 5.2: AI Model Selection
+### Story 5.2: AI Model Selection ✅ MVP
 
 As a user,
 I want to select which AI model to use,
@@ -697,7 +789,7 @@ So that I can choose based on my needs.
 
 ---
 
-### Story 5.3: Streaming AI Responses
+### Story 5.3: Streaming AI Responses ✅ MVP
 
 As a user,
 I want to see AI responses stream in real-time,
@@ -713,7 +805,7 @@ So that I don't wait for the full response.
 
 ---
 
-### Story 5.4: Conversation History
+### Story 5.4: Conversation History ✅ MVP
 
 As a user,
 I want to view my conversation history,
@@ -729,7 +821,7 @@ So that I can reference past interactions.
 
 ---
 
-### Story 5.5: Multiple Parallel Chats
+### Story 5.5: Multiple Parallel Chats ⏳ DEFERRED
 
 As a user,
 I want to have multiple chat conversations open,
@@ -745,11 +837,13 @@ So that I can work on different topics.
 
 ---
 
-## Epic 6: RAG & Knowledge Base
+## Epic 6: RAG & Knowledge Base (Phase 2)
 
 Users can upload documents for AI-powered queries.
 
-### Story 6.1: Document Upload
+**Phase:** Phase 2 (Weeks 7-10)
+
+### Story 6.1: Document Upload ✅ Phase 2
 
 As a user,
 I want to upload documents (PDF, TXT, MD),
@@ -765,7 +859,7 @@ So that the AI can reference them.
 
 ---
 
-### Story 6.2: Document Chunking and Embedding
+### Story 6.2: Document Chunking and Embedding ✅ Phase 2
 
 As a system,
 I want to automatically chunk and embed documents,
@@ -781,7 +875,7 @@ So that they can be searched semantically.
 
 ---
 
-### Story 6.3: RAG-Powered Queries
+### Story 6.3: RAG-Powered Queries ✅ Phase 2
 
 As a user,
 I want to query my documents through AI chat,
@@ -797,7 +891,7 @@ So that the AI uses my knowledge base.
 
 ---
 
-### Story 6.4: Source Citations
+### Story 6.4: Source Citations ✅ Phase 2
 
 As a user,
 I want AI responses to cite sources,
@@ -813,7 +907,7 @@ So that I can verify information.
 
 ---
 
-### Story 6.5: Document Management
+### Story 6.5: Document Management ✅ Phase 2
 
 As a user,
 I want to manage my uploaded documents,
@@ -829,11 +923,14 @@ So that I can organize my knowledge base.
 
 ---
 
-## Epic 7: Directives & Context
+## Epic 7: Directives & Context ⏳ DEFERRED
 
 Users can guide AI behavior with directives and context.
 
-### Story 7.1: Create Organizational Directives
+**Status:** Full epic DEFERRED to post-launch
+**Reason:** Complexity without proven demand; simple context attachment covers 80% of use cases
+
+### Story 7.1: Create Organizational Directives ⏳ DEFERRED
 
 As an admin,
 I want to create directives (SOPs),
@@ -849,7 +946,9 @@ So that AI follows organizational guidelines.
 
 ---
 
-### Story 7.2: Attach Context to Conversations
+### Story 7.2: Attach Context to Conversations ✅ Phase 2 (Basic)
+
+**Note:** Simple context attachment (contact/project) in Phase 2; full directive system deferred.
 
 As a user,
 I want to attach context (contacts, projects, files) to chats,
@@ -865,7 +964,7 @@ So that AI has relevant information.
 
 ---
 
-### Story 7.3: Attach Directives to Conversations
+### Story 7.3: Attach Directives to Conversations ⏳ DEFERRED
 
 As a user,
 I want to attach directives to chats,
@@ -881,7 +980,7 @@ So that AI follows specific guidelines.
 
 ---
 
-### Story 7.4: AI Directive Following
+### Story 7.4: AI Directive Following ⏳ DEFERRED
 
 As a user,
 I want AI to follow attached directives,
@@ -897,11 +996,14 @@ So that responses match my organization's style.
 
 ---
 
-## Epic 8: AI Actions & Execution
+## Epic 8: AI Actions & Execution (Phase 2 - Essential)
 
-AI can draft emails, suggest tasks, and trigger webhooks.
+AI can draft emails and suggest tasks.
 
-### Story 8.1: AI Email Drafting
+**Phase:** Phase 2 (Weeks 7-10)
+**Deferred:** CRM field updates, webhooks
+
+### Story 8.1: AI Email Drafting ✅ Phase 2
 
 As a user,
 I want AI to draft emails based on context,
@@ -917,7 +1019,7 @@ So that I can quickly compose messages.
 
 ---
 
-### Story 8.2: AI Task Suggestions
+### Story 8.2: AI Task Suggestions ✅ Phase 2
 
 As a user,
 I want AI to suggest tasks from conversation,
@@ -933,7 +1035,7 @@ So that action items are captured.
 
 ---
 
-### Story 8.3: AI CRM Field Updates
+### Story 8.3: AI CRM Field Updates ⏳ DEFERRED
 
 As a user,
 I want AI to update CRM fields with my confirmation,
@@ -949,7 +1051,7 @@ So that data stays current.
 
 ---
 
-### Story 8.4: AI Email Sending
+### Story 8.4: AI Email Sending ✅ Phase 2
 
 As a user,
 I want AI to send emails with my confirmation,
@@ -965,7 +1067,7 @@ So that outreach is executed.
 
 ---
 
-### Story 8.5: Webhook Actions
+### Story 8.5: Webhook Actions ⏳ DEFERRED
 
 As a user,
 I want AI to trigger webhooks,
@@ -981,11 +1083,14 @@ So that external systems are updated.
 
 ---
 
-## Epic 9: Document Generation
+## Epic 9: Document Generation ⏳ DEFERRED (Consider for Phase 3)
 
 Users can generate PDF proposals from templates.
 
-### Story 9.1: Proposal Template Creation
+**Status:** DEFERRED to post-launch or late Phase 3
+**Reason:** Complex feature; invoicing covers immediate needs
+
+### Story 9.1: Proposal Template Creation ⏳ DEFERRED
 
 As an admin,
 I want to create proposal templates,
@@ -1001,7 +1106,7 @@ So that documents follow consistent formats.
 
 ---
 
-### Story 9.2: Generate PDF Proposal
+### Story 9.2: Generate PDF Proposal ⏳ DEFERRED
 
 As a user,
 I want to generate a PDF proposal for a client,
@@ -1017,7 +1122,7 @@ So that I can send professional documents.
 
 ---
 
-### Story 9.3: Preview and Download Documents
+### Story 9.3: Preview and Download Documents ⏳ DEFERRED
 
 As a user,
 I want to preview and download generated documents,
@@ -1033,11 +1138,14 @@ So that I can review before sharing.
 
 ---
 
-## Epic 10: Billing & Subscriptions
+## Epic 10: Billing & Subscriptions (Phase 2 - Essential)
 
-Users can manage subscription plans and token usage.
+Users can view usage and manage subscription plans.
 
-### Story 10.1: Token Usage Tracking
+**Phase:** Phase 2 (Weeks 7-10)
+**Deferred:** Token pack purchases (can use plan upgrade instead)
+
+### Story 10.1: Token Usage Tracking ✅ Phase 2
 
 As a user,
 I want to see my token usage,
@@ -1053,7 +1161,7 @@ So that I can monitor my AI consumption.
 
 ---
 
-### Story 10.2: Plan Management
+### Story 10.2: Plan Management ✅ Phase 2
 
 As a user,
 I want to view and manage my subscription plan,
@@ -1069,7 +1177,7 @@ So that I can adjust as needed.
 
 ---
 
-### Story 10.3: Token Pack Purchase
+### Story 10.3: Token Pack Purchase ⏳ DEFERRED
 
 As a user,
 I want to purchase additional tokens,
@@ -1085,7 +1193,7 @@ So that I can continue using AI when limits are reached.
 
 ---
 
-### Story 10.4: Token Limit Enforcement
+### Story 10.4: Token Limit Enforcement ✅ Phase 2
 
 As a system,
 I want to enforce token limits per plan,
@@ -1101,7 +1209,7 @@ So that usage stays within subscription.
 
 ---
 
-### Story 10.5: Stripe Webhook Integration
+### Story 10.5: Stripe Webhook Integration ✅ Phase 2
 
 As a system,
 I want to sync with Stripe via webhooks,

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select"
 import { useContactStore } from '@/stores/contact-store'
 import { ContactStatus, STATUS_LABELS } from '@/types/contact'
-import { UserPlus } from 'lucide-react'
+import { UserPlus, Loader2 } from 'lucide-react'
 
 export function AddContactDialog() {
     const [open, setOpen] = useState(false)
@@ -31,14 +31,16 @@ export function AddContactDialog() {
     const [phone, setPhone] = useState('')
     const [company, setCompany] = useState('')
     const [status, setStatus] = useState<ContactStatus>('lead')
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const addContact = useContactStore((state) => state.addContact)
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        if (!name || !email) return
+        if (!name || !email || isSubmitting) return
 
-        addContact({
+        setIsSubmitting(true)
+        await addContact({
             name,
             email,
             phone: phone || undefined,
@@ -53,6 +55,7 @@ export function AddContactDialog() {
         setCompany('')
         setStatus('lead')
         setOpen(false)
+        setIsSubmitting(false)
     }
 
     return (
@@ -128,11 +131,11 @@ export function AddContactDialog() {
                         </div>
                     </div>
                     <DialogFooter>
-                        <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+                        <Button type="button" variant="outline" onClick={() => setOpen(false)} disabled={isSubmitting}>
                             Cancel
                         </Button>
-                        <Button type="submit" className="bg-[#3D4A67] hover:bg-[#2D3A57]">
-                            Save Contact
+                        <Button type="submit" className="bg-[#3D4A67] hover:bg-[#2D3A57]" disabled={isSubmitting}>
+                            {isSubmitting ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />Saving...</> : 'Save Contact'}
                         </Button>
                     </DialogFooter>
                 </form>
