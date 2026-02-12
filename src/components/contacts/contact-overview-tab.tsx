@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useInvoiceStore } from '@/stores/invoice-store'
 import { useProjectStore } from '@/stores/project-store'
 import { PortalAccessSection } from './portal-access-section'
+import { ActivityTimeline } from './activity-timeline'
 import { Mail, Phone, Building2, Plus, FileText, FolderKanban, CheckSquare } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useMemo } from 'react'
@@ -142,6 +143,9 @@ export function ContactOverviewTab({ contact }: ContactOverviewTabProps) {
                     </Button>
                 </CardContent>
             </Card>
+
+            {/* Activity Timeline */}
+            <ActivityTimeline contactId={contact.id} />
         </div>
     )
 }
