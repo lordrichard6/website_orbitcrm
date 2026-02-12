@@ -5,7 +5,8 @@ import { useContactStore } from '@/stores/contact-store'
 import { useProjectStore } from '@/stores/project-store'
 import { useTaskStore } from '@/stores/task-store'
 import { useChatStore } from '@/stores/chat-store'
-import { Users, FolderKanban, CheckSquare, MessageSquare, UserPlus, FolderPlus, Bot, User, Folder, MessagesSquare, Loader2 } from 'lucide-react'
+import { OrganizationActivityFeed } from '@/components/dashboard/organization-activity-feed'
+import { Users, FolderKanban, CheckSquare, MessageSquare, UserPlus, FolderPlus, Bot, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
@@ -101,44 +102,7 @@ export default function DashboardPage() {
 
             {/* Recent Activity & Quick Actions */}
             <div className="grid gap-6 md:grid-cols-2">
-                <Card className="border-slate-200 bg-white shadow-sm">
-                    <CardHeader>
-                        <CardTitle className="text-[#3D4A67]">Recent Activity</CardTitle>
-                        <CardDescription className="text-slate-600">Your latest CRM activity</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        {contacts.length === 0 && projects.length === 0 && tasks.length === 0 && conversations.length === 0 ? (
-                            <p className="text-slate-500 text-center py-8">No recent activity</p>
-                        ) : (
-                            <div className="space-y-3">
-                                {contacts.slice(-2).reverse().map(c => (
-                                    <div key={c.id} className="flex items-center gap-3 text-sm">
-                                        <div className="p-1.5 rounded-full bg-[#3D4A67]/10">
-                                            <User className="h-3.5 w-3.5 text-[#3D4A67]" />
-                                        </div>
-                                        <span className="text-slate-700">Added contact: {c.name}</span>
-                                    </div>
-                                ))}
-                                {projects.slice(-2).reverse().map(p => (
-                                    <div key={p.id} className="flex items-center gap-3 text-sm">
-                                        <div className="p-1.5 rounded-full bg-[#9EAE8E]/10">
-                                            <Folder className="h-3.5 w-3.5 text-[#9EAE8E]" />
-                                        </div>
-                                        <span className="text-slate-700">Created project: {p.name}</span>
-                                    </div>
-                                ))}
-                                {conversations.slice(-2).reverse().map(c => (
-                                    <div key={c.id} className="flex items-center gap-3 text-sm">
-                                        <div className="p-1.5 rounded-full bg-[#D1855C]/10">
-                                            <MessagesSquare className="h-3.5 w-3.5 text-[#D1855C]" />
-                                        </div>
-                                        <span className="text-slate-700">Chat: {c.title}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </CardContent>
-                </Card>
+                <OrganizationActivityFeed limit={10} showViewAll={true} />
 
                 <Card className="border-slate-200 bg-white shadow-sm">
                     <CardHeader>
